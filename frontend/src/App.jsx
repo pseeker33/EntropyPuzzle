@@ -1,35 +1,71 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from 'react';
+import { ethers } from 'ethers';
+import ContractInteraction from './components/ContractInteraction';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import ContractABI from "./ContractABI.json";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [account, setAccount] = useState(null);
+  const [contract, setContract] = useState(null);
+
+  const contractAddress = "TU_DIRECCION_DE_CONTRATO_DESPLEGADO";
+  const contractABI = [
+    // Añade aquí los métodos del ABI de tu contrato
+    "function getNewNumber() public payable",
+    "function claimLottery() public",
+    "function getContractState() public view returns (address, bytes32, uint256, uint256, uint256, uint8)"
+  ];
+
+  useEffect(() => {
+    const connectWallet = async () => {
+      if (window.ethereum) {
+        try {
+          await window.ethereum.request({ method: 'eth_requestAccounts' });
+          const provider = new ethers.BrowserProvider(window.ethereum, 'hardhat');
+          /* const provider = new ethers.BrowserProvider(
+            window.ethereum, 
+            {
+              chainId: 1337,
+              ensAddress: ethers.ZeroAddress  // Deshabilita explícitamente ENS
+            }
+          ); */
+          const signer = await provider.getSigner();
+          const address = await signer.getAddress();
+          setAccount(address);
+
+          const contractInstance = new ethers.Contract(
+            contractAddress, 
+            contractABI, 
+            signer
+          );
+          setContract(contractInstance);
+        } catch (error) {
+          console.error("Error conectando wallet", error);
+        toast.error("Error conectando wallet");
+        }
+      }
+    };
+
+    connectWallet();
+  }, []);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="min-h-screen bg-gray-100 p-8">
+      <div className="max-w-4xl mx-auto bg-white shadow-md rounded-lg p-6">
+        <h1 className="text-2xl font-bold mb-4">Adversarial Entropy Game</h1>
+        {account ? (
+          <ContractInteraction 
+            contract={contract} 
+            account={account} 
+          />
+        ) : (
+          <p>Por favor, conecta tu wallet de Ethereum</p>
+        )}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+      <ToastContainer />
+    </div>
+  );
 }
 
-export default App
+export default App;
