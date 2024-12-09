@@ -1,4 +1,4 @@
-# 🎲 GoodNumbers: Decentralized Entropy Generation 🔗
+# 🎲 EntropyPuzzle: Decentralized Entropy Generation 🔗
 
 <p align="center">
     <img src="./frontend/public/blockchain-entropy.jpg"  height=400>
@@ -11,13 +11,11 @@
 
 ## 🌐 Blockchain and Entropy
 
-In blockchain systems, true randomness is challenging to achieve. Traditional random number generators are predictable and can be manipulated. Entropy—a measure of unpredictability—is crucial for cryptographic security, smart contracts, and applications like gaming, gambling, and scientific simulations.
-
-GoodNumbers addresses this by leveraging blockchain's decentralized nature to generate verifiable, manipulation-resistant random numbers. By involving multiple participants and using complex input parameters, we create a source of entropy that's transparent, auditable, and resistant to single-point manipulation.
+In blockchain systems, true randomness is challenging to achieve. Traditional random number generators are predictable and can be manipulated. Entropy, which measures the degree of unpredictability, is crucial for cryptographic security, smart contracts, and applications like gaming, gambling, and scientific simulations.
 
 ## 🎯 Project Overview
 
-GoodNumbers is a blockchain-based entropy generation system that creates decentralized randomness through a unique lottery mechanism. Participants compete either adversarially or altruistically to generate entropy, win prizes, and fund social projects.
+EntropyPuzzle is a blockchain-based entropy generation system that creates decentralized randomness through a unique lottery mechanism. Participants compete either adversarially or altruistically to generate entropy, win prizes, and fund social projects.
 
 ### 🔍 How It Works
 
