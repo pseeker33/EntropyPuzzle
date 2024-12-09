@@ -46,7 +46,8 @@ EntropyPuzzle is a blockchain-based entropy generation system that creates decen
 GoodNumbers/
 ├── contract/
 │   ├── contracts/
-│   │   └── GoodNumbers.sol
+│   │   └── Adversarial-Entropy-Game_Interface.sol
+│   │   └── Adversarial-Entropy-Game.sol
 │   ├── scripts/
 │   │   ├── deploy.js
 │   │   └── interact.js
@@ -54,7 +55,13 @@ GoodNumbers/
 └── client/
     ├── src/
     │   ├── App.jsx
-    │   └── components/
+    │   ├── App.css
+    │   ├── components/
+		│   │		└── ContractInteraction.jsx
+    │   └── context/
+		│   		└── ToastProvider.jsx
+    ├── index.html
+    ├── package.json
     └── vite.config.js
 ```
 
