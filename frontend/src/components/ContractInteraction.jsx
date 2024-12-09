@@ -56,6 +56,7 @@ function ContractInteraction({ contract, account }) {
 
   return (
     <div className="space-y-4">
+      <p>Cuenta conectada: {account}</p>
       <div className="bg-gray-50 p-4 rounded-lg">
         <h2 className="font-bold">Estado del Contrato</h2>
         <p>Número de Lotería: {contractState.lotteryNumber}</p>
