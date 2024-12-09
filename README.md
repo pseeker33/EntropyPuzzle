@@ -165,4 +165,4 @@ Twitter: [![X (formerly Twitter) URL](https://img.shields.io/twitter/url?url=htt
 
 ## 📝 License
 
-Distributed under MIT License.
+This project is distributed under the [MIT License](./LICENSE.md).
